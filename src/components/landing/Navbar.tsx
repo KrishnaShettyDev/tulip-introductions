@@ -25,10 +25,10 @@ const Navbar = () => {
         {/* CTA */}
         <a
           href="#waitlist"
-          className={`px-5 py-2 rounded-full font-sans text-sm transition-all duration-500 ${
+          className={`px-5 py-2 rounded-full font-sans text-sm ${
             scrolled
-              ? "text-[hsl(var(--ink))] border border-[hsl(var(--ink))]/15"
-              : "text-white/90 border border-white/20"
+              ? "liquid-glass-warm text-[hsl(var(--ink))]"
+              : "liquid-glass text-white/90"
           }`}
         >
           join beta

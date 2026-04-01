@@ -53,13 +53,14 @@ const HowItWorksSection = () => {
               <div
                 key={step.title}
                 className={`reveal opacity-0 flex flex-col ${isEven ? "md:flex-row" : "md:flex-row-reverse"} items-center gap-6 sm:gap-8 md:gap-12 lg:gap-16`}
+                style={{ animationDelay: `${i * 0.1}s` }}
               >
                 {/* Image */}
-                <div className="w-full md:w-1/2 overflow-hidden">
+                <div className="w-full md:w-1/2 overflow-hidden group">
                   <img
                     src={step.image}
                     alt={step.imageAlt}
-                    className="w-full aspect-[4/3] object-cover amber-filter hover:scale-[1.02] transition-transform duration-700"
+                    className="w-full aspect-[4/3] object-cover amber-filter group-hover:scale-[1.03] transition-transform duration-700 ease-out"
                     loading="lazy"
                     style={{ transform: `rotate(${step.imageRotate})` }}
                   />
