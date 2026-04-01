@@ -63,7 +63,7 @@ const FooterSection = () => {
 
         {/* Copyright */}
         <p className="text-ink/50 font-sans text-sm">
-          © 2026, plutaslab
+          © 2026, <a href="https://www.plutas.in/landing.html" target="_blank" rel="noopener noreferrer" className="hover:text-ink transition-colors">plutaslab</a>
         </p>
       </div>
     </footer>
