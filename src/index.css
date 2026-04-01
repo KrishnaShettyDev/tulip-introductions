@@ -321,15 +321,15 @@ input:focus {
 .text-shimmer {
   background: linear-gradient(
     90deg,
-    rgba(255, 255, 255, 0.9) 0%,
-    rgba(255, 220, 200, 1) 25%,
-    rgba(255, 255, 255, 0.9) 50%,
-    rgba(255, 220, 200, 1) 75%,
-    rgba(255, 255, 255, 0.9) 100%
+    rgba(255, 245, 235, 1) 0%,
+    rgba(255, 200, 150, 1) 25%,
+    rgba(255, 255, 255, 1) 50%,
+    rgba(255, 200, 150, 1) 75%,
+    rgba(255, 245, 235, 1) 100%
   );
   background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: textShimmer 4s linear infinite;
+  animation: textShimmer 3s ease-in-out infinite;
 }
