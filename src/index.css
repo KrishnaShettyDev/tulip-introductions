@@ -307,3 +307,29 @@ input:focus {
   border-color: rgba(139, 69, 69, 0.4);
   box-shadow: 0 0 0 3px rgba(139, 69, 69, 0.1);
 }
+
+/* Text shimmer animation for special text */
+@keyframes textShimmer {
+  0% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.text-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(255, 220, 200, 1) 25%,
+    rgba(255, 255, 255, 0.9) 50%,
+    rgba(255, 220, 200, 1) 75%,
+    rgba(255, 255, 255, 0.9) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textShimmer 4s linear infinite;
+}
