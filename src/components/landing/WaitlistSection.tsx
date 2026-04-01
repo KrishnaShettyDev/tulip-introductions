@@ -1,16 +1,38 @@
 import { useState } from "react";
 import marbleStaircase from "@/assets/marble-staircase.jpg";
+import { supabase } from "@/lib/supabase";
 
 const WaitlistSection = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (name && email) {
-      setSubmitted(true);
+    if (!name || !email) return;
+
+    setLoading(true);
+    setError("");
+
+    const { error: insertError } = await supabase
+      .from("waitlist")
+      .insert([{ name, email, phone: phone || null }]);
+
+    setLoading(false);
+
+    if (insertError) {
+      if (insertError.code === "23505") {
+        setError("this email is already on the waitlist.");
+      } else {
+        setError("something went wrong. please try again.");
+      }
+      return;
     }
+
+    setSubmitted(true);
   };
 
   return (
@@ -52,11 +74,22 @@ const WaitlistSection = () => {
                 required
                 className="w-full bg-transparent border border-ink-border px-4 sm:px-5 py-3 sm:py-3.5 rounded-full font-sans text-sm text-ink placeholder:ink-muted focus:outline-none focus:border-burgundy transition-colors"
               />
+              <input
+                type="tel"
+                placeholder="phone number"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                className="w-full bg-transparent border border-ink-border px-4 sm:px-5 py-3 sm:py-3.5 rounded-full font-sans text-sm text-ink placeholder:ink-muted focus:outline-none focus:border-burgundy transition-colors"
+              />
+              {error && (
+                <p className="text-burgundy font-sans text-xs sm:text-sm">{error}</p>
+              )}
               <button
                 type="submit"
-                className="w-full inline-flex items-center justify-center gap-2 glass-button px-6 sm:px-8 py-3 sm:py-3.5 rounded-full font-sans text-sm text-ink border border-[hsl(var(--ink))]/15 bg-[hsl(var(--ink))]/8 backdrop-blur-xl hover:bg-[hsl(var(--ink))]/12 transition-all duration-500"
+                disabled={loading}
+                className="w-full inline-flex items-center justify-center gap-2 glass-button px-6 sm:px-8 py-3 sm:py-3.5 rounded-full font-sans text-sm text-ink border border-[hsl(var(--ink))]/15 bg-[hsl(var(--ink))]/8 backdrop-blur-xl hover:bg-[hsl(var(--ink))]/12 transition-all duration-500 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                join beta <span className="text-lg">↗</span>
+                {loading ? "joining..." : "join beta"} {!loading && <span className="text-lg">↗</span>}
               </button>
             </form>
           ) : (
