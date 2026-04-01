@@ -42,12 +42,12 @@ const WaitlistSection = () => {
         <img
           src={marbleStaircase}
           alt="Grand marble staircase"
-          className="w-full h-full object-cover amber-filter opacity-60"
+          className="w-full h-full object-cover amber-filter opacity-90"
           loading="lazy"
           width={600}
           height={800}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[hsl(var(--background))]/40 via-transparent to-[hsl(var(--background))]/70" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[hsl(var(--background))]/20 via-transparent to-[hsl(var(--background))]/40" />
       </div>
 
       <div className="relative z-10 max-w-lg mx-auto text-center">
@@ -93,9 +93,9 @@ const WaitlistSection = () => {
               </button>
             </form>
           ) : (
-            <div className="border border-ink-border rounded-2xl p-6 sm:p-8">
+            <div className="border border-ink-border rounded-2xl p-6 sm:p-8 bg-white/80 backdrop-blur-sm max-w-sm mx-auto">
               <p className="font-serif text-lg sm:text-xl text-ink mb-2">you're in.</p>
-              <p className="ink-body font-sans text-xs sm:text-sm">tulip will text you soon. keep your imessage close.</p>
+              <p className="text-ink/70 font-sans text-xs sm:text-sm">tulip will text you soon. keep your imessage close.</p>
             </div>
           )}
         </div>
