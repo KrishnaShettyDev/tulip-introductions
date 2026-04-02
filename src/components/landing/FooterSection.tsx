@@ -48,13 +48,13 @@ const FooterSection = () => {
         {/* Links */}
         <div className="flex items-center gap-6 mb-6 sm:mb-8">
           <a
-            href="#"
+            href="/privacy"
             className="text-ink/60 font-sans text-sm hover:text-ink transition-colors underline underline-offset-2"
           >
             Privacy Policy
           </a>
           <a
-            href="#"
+            href="/terms"
             className="text-ink/60 font-sans text-sm hover:text-ink transition-colors underline underline-offset-2"
           >
             Terms and Conditions
