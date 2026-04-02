@@ -34,10 +34,6 @@ const faqs = [
     q: "how long until my first match?",
     a: "most people get their first introduction within 48 hours.",
   },
-  {
-    q: "what does it cost?",
-    a: "first 500 people — free. after that, ₹500/month for women. ₹1,000/month for men. the price is the filter.",
-  },
 ];
 
 const FAQSection = () => {
