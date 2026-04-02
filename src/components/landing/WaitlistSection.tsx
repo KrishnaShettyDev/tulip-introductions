@@ -1,6 +1,7 @@
 import { useState } from "react";
 import marbleStaircase from "@/assets/marble-staircase.jpg";
 import { supabase } from "@/lib/supabase";
+import { posthog } from "@/lib/posthog";
 
 const WaitlistSection = () => {
   const [name, setName] = useState("");
@@ -31,6 +32,11 @@ const WaitlistSection = () => {
       }
       return;
     }
+
+    // Track conversion event
+    posthog.capture('waitlist_signup', {
+      has_phone: !!phone,
+    });
 
     setSubmitted(true);
   };
